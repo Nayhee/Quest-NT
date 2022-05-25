@@ -22,11 +22,11 @@ namespace Quest
 
             Challenge favoriteBeatle = new Challenge(
                 @"Who's your favorite Beatle?
-                1) John
-                2) Paul
-                3) George
-                4) Ringo
-                ",
+    1) John
+    2) Paul
+    3) George
+    4) Ringo
+",
                 4, 20
             );
 
@@ -54,10 +54,14 @@ namespace Quest
             };
 
             // Loop through all the challenges and subject the Adventurer to them
-            foreach (Challenge challenge in challenges)
+            void startChallenges()
             {
-                challenge.RunChallenge(theAdventurer);
+                foreach (Challenge challenge in challenges)
+                {
+                    challenge.RunChallenge(theAdventurer);
+                }
             }
+            startChallenges();
 
             // This code examines how Awesome the Adventurer is after completing the challenges
             // And praises or humiliates them accordingly
@@ -73,6 +77,22 @@ namespace Quest
             {
                 Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
             }
+
+            bool playAgain = true;
+            while(playAgain)
+            {
+                Console.Write("Would you like to play again? (Y/N)");
+                string playAgainAnswer = Console.ReadLine().ToLower();
+                if(playAgainAnswer == "y")
+                {
+                    startChallenges();
+                }
+                else {
+                    Console.WriteLine("I guess you've had enough of my challenges. See ya!");
+                    playAgain = false;
+                }
+            }
+
         }
     }
 }
