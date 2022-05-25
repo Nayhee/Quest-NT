@@ -9,11 +9,8 @@ namespace Quest
     {
         static void Main(string[] args)
         {
-            // Create a few challenges for our Adventurer's quest
-            // The "Challenge" Constructor takes three arguments
-            //   the text of the challenge
-            //   a correct answer
-            //   a number of awesome points to gain or lose depending on the success of the challenge
+            Console.WriteLine("What is your name, adventurer?");
+            string userName = Console.ReadLine();
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
             Challenge theAnswer = new Challenge(
                 "What's the answer to life, the universe and everything?", 42, 25);
@@ -43,7 +40,7 @@ namespace Quest
             int maxAwesomeness = 100;
 
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer("Jack");
+            Adventurer theAdventurer = new Adventurer(userName);
 
             // A list of challenges for the Adventurer to complete
             // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
