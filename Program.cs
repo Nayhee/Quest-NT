@@ -48,6 +48,7 @@ namespace Quest
             {
                 ShininessLevel = 5
             };
+            Prize myPrize = new Prize("The prize is one million dollars!");
 
             // Make a new "Adventurer" object using the "Adventurer" class
             Adventurer theAdventurer = new Adventurer(userName, myRobe, myHat);
@@ -94,6 +95,7 @@ namespace Quest
             bool playAgain = true;
             while(playAgain)
             {
+                myPrize.ShowPrize(theAdventurer);
                 Console.Write("Would you like to play again? (Y/N)");
                 string playAgainAnswer = Console.ReadLine().ToLower();
                 if(playAgainAnswer == "y")
