@@ -9,6 +9,8 @@ namespace Quest
     {
         static void Main(string[] args)
         {
+            int NumberCorrect = 0;
+            
             Console.WriteLine("What is your name, adventurer?");
             string userName = Console.ReadLine();
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
@@ -32,12 +34,6 @@ namespace Quest
                 4, 20
             );
 
-            // "Awesomeness" is like our Adventurer's current "score"
-            // A higher Awesomeness is better
-
-            // Here we set some reasonable min and max values.
-            //  If an Adventurer has an Awesomeness greater than the max, they are truly awesome
-            //  If an Adventurer has an Awesomeness less than the min, they are terrible
             int minAwesomeness = 0;
             int maxAwesomeness = 100;
 
@@ -53,7 +49,7 @@ namespace Quest
             Prize myPrize = new Prize("The prize is one million dollars!");
 
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer(userName, myRobe, myHat);
+            Adventurer theAdventurer = new Adventurer(userName, myRobe, myHat, NumberCorrect);
 
             
             // A list of challenges for the Adventurer to complete
@@ -72,21 +68,19 @@ namespace Quest
             // Loop through all the challenges and subject the Adventurer to them
             void startChallenges()
             {
+                Console.WriteLine(theAdventurer.GetDescription());
                 List<Challenge> fiveChallenges = new List<Challenge>();
 
                 int count = 0;
                 while(count < 5)
                 {
-                    int ranNum = new Random().Next(1, 6);
+                    int ranNum = new Random().Next(0, 5);
                     if(!fiveChallenges.Contains(challenges[ranNum]))
                     {
                         fiveChallenges.Add(challenges[ranNum]);
                         count++;
                     }
                 }
-                
-                
-                Console.WriteLine(theAdventurer.GetDescription());
                 
                 foreach (Challenge challenge in fiveChallenges)
                 {
@@ -118,6 +112,7 @@ namespace Quest
                 string playAgainAnswer = Console.ReadLine().ToLower();
                 if(playAgainAnswer == "y")
                 {
+                    theAdventurer.Awesomeness += theAdventurer.NumberCorrect * 10;
                     startChallenges();
                 }
                 else {

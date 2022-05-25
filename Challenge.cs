@@ -34,9 +34,11 @@ namespace Quest
             bool isNumber = int.TryParse(answer, out numAnswer);
 
             Console.WriteLine();
+    
             if (isNumber && numAnswer == _correctAnswer)
             {
                 Console.WriteLine("Well Done!");
+                adventurer.NumberCorrect++;
 
                 // Note how we access an Adventurer object's property
                 adventurer.Awesomeness += _awesomenessChange;
