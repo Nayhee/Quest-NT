@@ -12,6 +12,8 @@ namespace Quest
             Console.WriteLine("What is your name, adventurer?");
             string userName = Console.ReadLine();
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
+            Challenge forsbergAge = new Challenge("How old is Peter Forsberg?", 48, 30);
+            Challenge leeAge = new Challenge("How old is Lee Jenning?", 31, 25);
             Challenge theAnswer = new Challenge(
                 "What's the answer to life, the universe and everything?", 42, 25);
             Challenge whatSecond = new Challenge(
@@ -62,15 +64,31 @@ namespace Quest
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                forsbergAge,
+                leeAge
             };
 
             // Loop through all the challenges and subject the Adventurer to them
             void startChallenges()
             {
+                List<Challenge> fiveChallenges = new List<Challenge>();
+
+                int count = 0;
+                while(count < 5)
+                {
+                    int ranNum = new Random().Next(1, 6);
+                    if(!fiveChallenges.Contains(challenges[ranNum]))
+                    {
+                        fiveChallenges.Add(challenges[ranNum]);
+                        count++;
+                    }
+                }
+                
+                
                 Console.WriteLine(theAdventurer.GetDescription());
                 
-                foreach (Challenge challenge in challenges)
+                foreach (Challenge challenge in fiveChallenges)
                 {
                     challenge.RunChallenge(theAdventurer);
                 }
